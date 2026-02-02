@@ -1,0 +1,43 @@
+<aside class="sidebar" [class.sidebar--collapsed]="isCollapsed()">
+  <div class="sidebar__content">
+    <nav class="sidebar__nav">
+      @for (item of menuItems; track item.label) {
+        <div class="sidebar__menu-item">
+          @if (!item.children) {
+            <a
+              [routerLink]="item.route"
+              routerLinkActive="sidebar__link--active"
+              class="sidebar__link">
+              <span class="sidebar__icon" [attr.data-icon]="item.icon"></span>
+              <span class="sidebar__label">{{ item.label }}</span>
+            </a>
+          } @else {
+            <button
+              class="sidebar__link sidebar__link--expandable"
+              [class.sidebar__link--expanded]="isMenuExpanded(item.label)"
+              (click)="toggleMenu(item.label)">
+              <span class="sidebar__icon" [attr.data-icon]="item.icon"></span>
+              <span class="sidebar__label">{{ item.label }}</span>
+              <span class="sidebar__arrow">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </span>
+            </button>
+            <div class="sidebar__submenu" [class.sidebar__submenu--open]="isMenuExpanded(item.label)">
+              @for (child of item.children; track child.label) {
+                <a
+                  [routerLink]="child.route"
+                  routerLinkActive="sidebar__sublink--active"
+                  class="sidebar__sublink">
+                  <span class="sidebar__icon sidebar__icon--small" [attr.data-icon]="child.icon"></span>
+                  <span class="sidebar__label">{{ child.label }}</span>
+                </a>
+              }
+            </div>
+          }
+        </div>
+      }
+    </nav>
+  </div>
+</aside>

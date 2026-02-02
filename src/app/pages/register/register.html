@@ -1,0 +1,144 @@
+<div class="register">
+  <div class="register__container">
+    <div class="register__header">
+      <h1 class="register__title">Join Ceekul Civilisation</h1>
+      <p class="register__subtitle">Create your account to get started</p>
+    </div>
+
+    <app-step-indicator [currentStep]="currentStep()" [totalSteps]="2" />
+
+    <div class="register__form">
+      <!-- Step 1: Contact & Password -->
+      @if (currentStep() === 1) {
+        <div class="register__step">
+          <h2 class="register__step-title">Contact Information</h2>
+
+          <!-- Contact Method Selection -->
+          <div class="register__field">
+            <label class="register__label">Choose contact method</label>
+            <div class="register__toggle-group">
+              <button
+                type="button"
+                class="register__toggle-btn"
+                [class.register__toggle-btn--active]="stepOneData().contactMethod === 'mobile'"
+                (click)="updateContactMethod('mobile')">
+                Mobile
+              </button>
+              <button
+                type="button"
+                class="register__toggle-btn"
+                [class.register__toggle-btn--active]="stepOneData().contactMethod === 'email'"
+                (click)="updateContactMethod('email')">
+                Email
+              </button>
+            </div>
+          </div>
+
+          <!-- Contact Input -->
+          <div class="register__field">
+            <label class="register__label">
+              {{ stepOneData().contactMethod === 'mobile' ? 'Mobile Number' : 'Email Address' }}
+            </label>
+            <div class="register__input-group">
+              <input
+                type="{{ stepOneData().contactMethod === 'mobile' ? 'tel' : 'email' }}"
+                class="register__input"
+                [placeholder]="stepOneData().contactMethod === 'mobile' ? '+91 99999 99999' : 'you@example.com'"
+                [value]="stepOneData().contactValue"
+                (input)="updateContactValue($any($event.target).value)"
+              />
+              <button
+                type="button"
+                class="register__otp-btn"
+                (click)="sendOtp()"
+                [disabled]="!stepOneData().contactValue">
+                {{ otpState().sent ? 'Resend OTP' : 'Send OTP' }}
+              </button>
+            </div>
+          </div>
+
+          <!-- OTP Input -->
+          @if (otpState().sent) {
+            <div class="register__field">
+              <label class="register__label">Enter OTP</label>
+              <app-otp-input
+                [length]="6"
+                (otpComplete)="onOtpComplete($event)"
+              />
+            </div>
+          }
+
+          <!-- Password -->
+          <div class="register__field">
+            <label class="register__label">Create Password</label>
+            <app-password-input
+              (valueChange)="onPasswordChange($event)"
+            />
+          </div>
+
+          <!-- Confirm Password -->
+          <div class="register__field">
+            <label class="register__label">Confirm Password</label>
+            <app-password-input
+              (valueChange)="onConfirmPasswordChange($event)"
+            />
+          </div>
+
+          <div class="register__actions">
+            <button
+              type="button"
+              class="register__btn register__btn--primary"
+              (click)="nextStep()">
+              Continue
+            </button>
+          </div>
+        </div>
+      }
+
+      <!-- Step 2: Personal Details -->
+      @if (currentStep() === 2) {
+        <div class="register__step">
+          <h2 class="register__step-title">Personal Details</h2>
+
+          <div class="register__field">
+            <label class="register__label">Full Name</label>
+            <input
+              type="text"
+              class="register__input"
+              placeholder="Enter your full name"
+            />
+          </div>
+
+          <div class="register__field">
+            <label class="register__label">Date of Birth</label>
+            <input
+              type="date"
+              class="register__input"
+            />
+          </div>
+
+          <div class="register__field">
+            <label class="register__label">Identity Document</label>
+            <app-document-upload />
+          </div>
+
+          <div class="register__actions">
+            <button
+              type="button"
+              class="register__btn register__btn--secondary"
+              (click)="previousStep()">
+              Back
+            </button>
+            <button
+              type="button"
+              class="register__btn register__btn--primary"
+              (click)="submitRegistration()"
+              [disabled]="isSubmitting()">
+              {{ isSubmitting() ? 'Submitting...' : 'Complete Registration' }}
+            </button>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</div>

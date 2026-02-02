@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ng generate:*)",
+      "Bash(find . -name \"*.css\" -exec sh -c 'mv \"\"$1\"\" \"\"${1%.css}.scss\"\"' _ {} ;)",
+      "Bash(npm run build:*)"
+    ]
+  }
+}

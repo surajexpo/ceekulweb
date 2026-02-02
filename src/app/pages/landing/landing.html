@@ -1,0 +1,78 @@
+<div class="landing landing--dark">
+  <!-- Three-Column Layout -->
+  <div class="three-col">
+    <!-- Left Column: Titles -->
+    <aside class="three-col__left">
+      <div class="title-list">
+        @for (item of titles; track item.id) {
+          <div 
+            class="title-item"
+            [class.title-item--active]="selectedId() === item.id"
+            (click)="selectTitle(item.id)">
+            {{ item.title }}
+          </div>
+        }
+      </div>
+    </aside>
+
+    <!-- Center Column: Dynamic Content -->
+    <main class="three-col__center">
+      <div class="content-area">
+        @if (selectedContent(); as content) {
+          <h2 class="content-area__heading">{{ content.heading }}</h2>
+          
+          @if (content.items && content.items.length > 0) {
+            <ul class="content-area__list">
+              @for (item of content.items; track $index) {
+                <li>{{ item }}</li>
+              }
+            </ul>
+          }
+          
+          @if (content.description) {
+            <p class="content-area__description">{{ content.description }}</p>
+          }
+          
+          @if (content.note) {
+            <div class="content-area__note">
+              {{ content.note }}
+            </div>
+          }
+        }
+      </div>
+    </main>
+
+    <!-- Right Column: Chat -->
+    <aside class="three-col__right">
+      <div class="chat-container">
+        <div class="chat-container__header">
+          <h3>Support Chat</h3>
+          <span class="chat-container__status">
+            <span class="status-dot"></span>
+            Online
+          </span>
+        </div>
+        
+        <div class="chat-container__messages">
+          <div class="chat-message chat-message--received">
+            <div class="chat-message__avatar">AI</div>
+            <div class="chat-message__content">
+              <p>Welcome to Ceekul Civilisation. How may I assist you today?</p>
+              <span class="chat-message__time">Now</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="chat-container__input">
+          <textarea placeholder="Type your message..." rows="2"></textarea>
+          <button class="chat-send-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>

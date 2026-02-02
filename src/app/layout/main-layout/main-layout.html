@@ -1,0 +1,55 @@
+<div class="layout">
+  <!-- Top Navbar -->
+  <app-navbar class="layout__navbar"></app-navbar>
+
+  <!-- Main Content Area with 3 columns -->
+  <div class="layout__body">
+    <!-- Left Sidebar -->
+    <app-sidebar
+      class="layout__sidebar"
+      [isCollapsed]="isSidebarCollapsed()">
+    </app-sidebar>
+
+    <!-- Center Content Area -->
+    <main class="layout__main">
+      <div class="layout__toolbar">
+        <button
+          class="layout__toggle-btn"
+          (click)="toggleSidebar()"
+          aria-label="Toggle sidebar">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+          <span>Menu</span>
+        </button>
+
+        <div class="layout__toolbar-actions">
+          <button
+            class="layout__toggle-btn layout__toggle-btn--chat"
+            (click)="toggleChatPanel()"
+            aria-label="Toggle chat panel">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+            <span>Chat</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="layout__content">
+        <router-outlet></router-outlet>
+      </div>
+    </main>
+
+    <!-- Right Chat Panel -->
+    <app-chat-panel
+      class="layout__chat"
+      [isOpen]="isChatPanelOpen()">
+    </app-chat-panel>
+  </div>
+
+  <!-- Footer -->
+  <app-footer class="layout__footer"></app-footer>
+</div>
