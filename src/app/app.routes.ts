@@ -1,11 +1,13 @@
 import { Routes } from '@angular/router';
 import { LandingLayout } from './layout/landing-layout/landing-layout';
-import { MainLayout } from './layout/main-layout/main-layout';
 import { Landing } from './pages/landing/landing';
 import { Register } from './pages/register/register';
-import { Dashboard } from './layout/pages/dashboard/dashboard';
-import { Analytics } from './layout/pages/analytics/analytics';
-import { Projects } from './layout/pages/projects/projects';
+import { PersonalLayout } from './layout/personal-layout/personal-layout';
+import { Potential } from './pages/personal/potential/potential';
+import { Projects } from './pages/personal/projects/projects';
+import { Neurons } from './pages/personal/neurons/neurons';
+import { Kutumb } from './pages/personal/kutumb/kutumb';
+import { Future } from './pages/personal/future/future';
 
 export const routes: Routes = [
   // Landing page with simple layout (navbar + content + footer)
@@ -21,16 +23,18 @@ export const routes: Routes = [
     path: 'register',
     component: Register
   },
-  // App routes with full layout (navbar + sidebar + content + chat + footer)
+
+  // Personal Dashboard
   {
-    path: 'app',
-    component: MainLayout,
+    path: 'personal',
+    component: PersonalLayout,
     children: [
-      { path: '', redirectTo: '/app/dashboard', pathMatch: 'full' },
-      { path: 'dashboard', component: Dashboard },
-      { path: 'analytics', component: Analytics },
+      { path: '', redirectTo: 'potential', pathMatch: 'full' },
+      { path: 'potential', component: Potential },
       { path: 'projects', component: Projects },
-      { path: 'reports', component: Dashboard }
+      { path: 'neurons', component: Neurons },
+      { path: 'kutumb', component: Kutumb },
+      { path: 'future', component: Future }
     ]
   },
   // Fallback

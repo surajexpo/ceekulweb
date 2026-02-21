@@ -1,0 +1,291 @@
+.layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #0f0f0f;
+    /* Match landing */
+    color: #e0e0e0;
+    /* Match landing */
+
+    &__navbar {
+        z-index: 1000;
+    }
+
+    &__container {
+        display: grid;
+        /* Switch to Grid to match landing */
+        grid-template-columns: 21% 55% 24%;
+        /* Exact widths from landing.scss */
+        min-height: calc(100vh - 64px);
+        /* Full height minus navbar */
+        width: 100%;
+        max-width: none;
+        /* Remove max-width constraint to fill screen like landing */
+        margin: 0;
+        padding: 0;
+        gap: 0;
+        /* Remove gap, handle via padding/borders */
+    }
+
+    /* Left Sidebar */
+    &__sidebar {
+        background: #1a1a1a;
+        /* Match landing */
+        border-right: 1px solid #2a2a2a;
+        /* Match landing */
+        padding: 2rem 0;
+
+        /* Sticky behavior inside grid cell if needed, or just let cell stretch */
+        height: 100%;
+    }
+
+    /* Main Content (Center) */
+    &__main {
+        background: #0f0f0f;
+        /* Match landing */
+        padding: 3rem 2.5rem;
+        /* Match landing padding */
+        overflow-y: auto;
+        height: calc(100vh - 64px);
+        /* Scrollable independent of sidebars */
+    }
+
+    /* Right Widgets */
+    &__widgets {
+        background: #1a1a1a;
+        /* Match landing */
+        border-left: 1px solid #2a2a2a;
+        /* Match landing */
+        height: 100%;
+    }
+
+    &__footer {
+        /* Footer might need adjustment if it overlays or sits at bottom */
+        /* For now, keeping it basic */
+        border-top: 1px solid #2a2a2a;
+        background: #0f0f0f;
+    }
+}
+
+/* Sidebar Specific Styles */
+.sidebar-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.ceevolution-header {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #2a2a2a;
+    padding: 0 1.5rem 1rem;
+    /* Adjust padding to match container */
+}
+
+.ceevolution-title {
+    color: #ff9900;
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+
+.dqrg-labels {
+    font-weight: bold;
+    letter-spacing: 5px;
+    font-size: 1rem;
+    color: #666;
+}
+
+.personal-nav {
+    &__list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        /* Match landing gap */
+    }
+
+    &__link {
+        display: block;
+        padding: 1rem 1.5rem;
+        /* Match landing title-item padding */
+        color: #a0a0a0;
+        /* Match landing title-item color */
+        text-decoration: none;
+        font-size: 0.875rem;
+        /* Match landing */
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        transition: all 0.2s ease;
+        border-left: 3px solid transparent;
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: #e0e0e0;
+            border-left-color: #ff9900;
+            /* Use orange instead of blue for personal theme */
+        }
+
+        &--active {
+            background: rgba(255, 153, 0, 0.1);
+            /* Orange tint */
+            color: #ff9900;
+            border-left-color: #ff9900;
+            font-weight: 700;
+        }
+    }
+}
+
+/* Chat Widget Styles adapted for Right Column */
+.widget {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.widget__header {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid #2a2a2a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h3 {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 600;
+        color: #e0e0e0;
+    }
+}
+
+.status-badge {
+    font-size: 0.875rem;
+    color: #4ade80;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #4ade80;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+.chat-body {
+    flex: 1;
+    padding: 1.5rem;
+    overflow-y: auto;
+    background: #161616;
+}
+
+.chat-message {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+
+    .avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: #ff9900;
+        /* Orange for personal chat */
+        color: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        font-weight: 600;
+        flex-shrink: 0;
+    }
+
+    .message {
+        padding: 0.875rem 1rem;
+        border-radius: 0.75rem;
+        background: #2a2a2a;
+        color: #e0e0e0;
+        font-size: 0.875rem;
+        line-height: 1.5;
+    }
+}
+
+.chat-input {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid #2a2a2a;
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-end;
+    background: #1a1a1a;
+
+    textarea {
+        flex: 1;
+        background: #2a2a2a;
+        border: 1px solid #3a3a3a;
+        color: #e0e0e0;
+        border-radius: 0.5rem;
+        padding: 0.75rem;
+        resize: none;
+        height: 40px;
+        /* Initial height */
+
+        &:focus {
+            outline: none;
+            border-color: #ff9900;
+            background: #2f2f2f;
+        }
+    }
+
+    button {
+        width: 40px;
+        height: 40px;
+        background: #ff9900;
+        color: #000;
+        border: none;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s;
+
+        &:hover {
+            background: #e68a00;
+            transform: translateY(-1px);
+        }
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .layout__container {
+        grid-template-columns: 1fr;
+        /* Stack vertically or hide columns */
+    }
+
+    .layout__sidebar,
+    .layout__widgets {
+        display: none;
+        /* Hide sidebars on smaller screens as per landing behavior */
+    }
+
+    .layout__main {
+        padding: 1.5rem;
+    }
+}

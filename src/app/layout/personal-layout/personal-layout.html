@@ -1,0 +1,62 @@
+<div class="layout">
+    <!-- Top Navbar -->
+    <app-navbar class="layout__navbar"></app-navbar>
+
+    <div class="layout__container">
+        <!-- Left Column: Navigation -->
+        <aside class="layout__sidebar">
+            <div class="sidebar-content">
+                <div class="ceevolution-header">
+                    <div class="ceevolution-title">MY CEEVOLUTION</div>
+                    <div class="dqrg-labels">D Q R G</div>
+                </div>
+
+                <nav class="personal-nav">
+                    <ul class="personal-nav__list">
+                        @for (item of navItems; track item.id) {
+                        <li class="personal-nav__item">
+                            <a [routerLink]="item.route" routerLinkActive="personal-nav__link--active"
+                                class="personal-nav__link">
+                                {{ item.label }}
+                            </a>
+                        </li>
+                        }
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Center Column: Dynamic Content -->
+        <main class="layout__main">
+            <router-outlet></router-outlet>
+        </main>
+
+        <!-- Right Column: Widgets -->
+        <aside class="layout__widgets">
+            <!-- Chat Widget (Static for now, can be extracted to component) -->
+            <div class="widget chat-widget">
+                <div class="widget__header">
+                    <h3>Support Chat</h3>
+                    <span class="status-badge">
+                        <span class="status-dot"></span> Online
+                    </span>
+                </div>
+                <div class="chat-body">
+                    <div class="chat-message received">
+                        <div class="avatar">AI</div>
+                        <div class="message">Welcome to Ceekul Civilisation. How may I assist you today?</div>
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <textarea placeholder="Type your message..."></textarea>
+                    <button>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Footer -->
+    <app-footer class="layout__footer"></app-footer>
+</div>

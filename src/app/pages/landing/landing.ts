@@ -41,9 +41,9 @@ export class Landing {
         'Understanding Consciousness',
         'Consciousness and Computation',
         'Emerging Models of Computation',
-        'Towards A Computational Theory of Everything',
-        'Automated Development of Computational Projects',
-        'Evolving Digital System Along Emerging Shared Ideals'
+        'Data Encoding and Representation',
+        'User-Centric Web of Things',
+        'Human-Machine Synergy'
       ],
       note: 'The emerging Computable Vision will be implemented by Ceekul Academy.'
     },

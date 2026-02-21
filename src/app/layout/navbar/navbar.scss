@@ -301,8 +301,88 @@
     }
   }
 }
-.navbar__brand-title h1{
-  color:#ffffff;
+
+.navbar__brand-title h1 {
+  color: #ffffff;
   font-size: 3.5rem;
 
+}
+
+.navbar__brand-title {
+  position: relative;
+  overflow: hidden; // The "Horizon" line
+
+
+  h1 {
+    font-family: 'Cinzel', serif; // Or a similar authoritative serif
+    font-size: 2.5rem;
+    margin: 0;
+
+    // Sunrise Gradient: Ivory -> Gold -> Amber
+    background: linear-gradient(to bottom,
+        #fff9e6 0%,
+        #ffcc33 50%,
+        #e67300 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    // Animation Properties
+    opacity: 0;
+    transform: translateY(100%) scale(0.98);
+    filter: blur(8px);
+
+    // The "Civilisation Rise" Keyframes
+    animation: sunrise-rise 2200ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    will-change: transform, opacity, filter;
+  }
+
+  // Optional Soft Glow behind the text
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120%;
+    height: 4.15rem;
+    background: radial-gradient(circle, rgba(255, 204, 51, 0.2) 0%, transparent 80%);
+    opacity: 0;
+    animation: sunrise-glow 2500ms 800ms ease-out forwards;
+  }
+}
+
+@keyframes sunrise-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(80px) scale(0.96);
+    filter: blur(12px);
+  }
+
+  30% {
+    opacity: 0.3;
+    /* Becomes visible slowly */
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes sunrise-glow {
+  to {
+    opacity: 1;
+  }
+}
+
+// Respect user preferences for reduced motion
+@media (prefers-reduced-motion: reduce) {
+  .navbar__brand-title h1 {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
 }

@@ -10,7 +10,7 @@ import { DocumentUpload as DocumentUploadModel } from '../../models/registration
 })
 export class DocumentUpload {
   label = input<string>('Upload Document');
-  accept = input<string>('image/jpeg,image/png,image/jpg');
+  accept = input<string>('application/pdf,image/jpeg,image/png,image/jpg');
   maxSize = input<number>(5 * 1024 * 1024); // 5MB
   disabled = input<boolean>(false);
 
@@ -67,7 +67,7 @@ export class DocumentUpload {
     // Validate file type
     const acceptedTypes = this.accept().split(',').map(t => t.trim());
     if (!acceptedTypes.some(type => file.type.match(type.replace('*', '.*')))) {
-      this.error.set('Invalid file type. Please upload JPG or PNG images only.');
+      this.error.set('Invalid file type. Please upload PDF, JPG or PNG files only.');
       return;
     }
 
