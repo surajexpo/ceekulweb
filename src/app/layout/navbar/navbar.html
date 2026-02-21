@@ -3,7 +3,7 @@
     <!-- Logo -->
     <div class="navbar__logo">
       <a routerLink="/" class="navbar__logo-link">
-        <span class="navbar__logo-text">{{ isLandingPage() ? 'CEEKUL' : 'MyApp' }}</span>
+        <!-- <span class="navbar__logo-text">{{ isLandingPage() ? 'CEEKUL' : 'MyApp' }}</span> -->
       </a>
     </div>
 
@@ -13,27 +13,8 @@
       <h1 aria-label="CEEKUL CIVILISATION">CEEKUL CIVILISATION</h1>
     </div>
     }
-    <!-- Desktop Navigation (only in app, not on landing) -->
-    @if (!isLandingPage()) {
-    <div class="navbar__nav" [class.navbar__nav--open]="isMobileMenuOpen()">
-      <a routerLink="/app/dashboard" routerLinkActive="navbar__nav-link--active" class="navbar__nav-link"
-        (click)="closeMobileMenu()">
-        Dashboard
-      </a>
-      <a routerLink="/app/analytics" routerLinkActive="navbar__nav-link--active" class="navbar__nav-link"
-        (click)="closeMobileMenu()">
-        Analytics
-      </a>
-      <a routerLink="/app/projects" routerLinkActive="navbar__nav-link--active" class="navbar__nav-link"
-        (click)="closeMobileMenu()">
-        Projects
-      </a>
-      <a routerLink="/app/reports" routerLinkActive="navbar__nav-link--active" class="navbar__nav-link"
-        (click)="closeMobileMenu()">
-        Reports
-      </a>
-    </div>
-    }
+
+
 
     <!-- Landing Page Actions (Register & Contact) -->
     @if (isLandingPage()) {

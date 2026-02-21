@@ -20,7 +20,7 @@ export class Landing {
   selectedId = signal('academy');
 
   titles = [
-    { id: 'academy', title: 'CEEKUL ACADEMY' },
+    { id: 'academy', title: 'FUTURE ACADEMY' },
     { id: 'vision', title: 'VISION COUNCIL' },
     { id: 'civilizer', title: 'CIVILIZER' },
     { id: 'reformers', title: 'REFORMERS' },

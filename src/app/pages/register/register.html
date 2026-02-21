@@ -1,3 +1,4 @@
+<app-navbar class="landing-layout__navbar" [isLandingPage]="true"></app-navbar>
 <div class="register">
   <!-- Left Sidebar -->
   <aside class="register__sidebar">
@@ -40,26 +41,26 @@
 
         <!-- Place of Birth -->
         <div class="register__field">
-          <label class="register__label" for="placeOfBirth">Place of Birth</label>
+          <label class="register__label" for="placeOfBirth">Your place of birth</label>
           <input type="text" id="placeOfBirth" formControlName="placeOfBirth" class="register__input"
             placeholder="Enter place of birth" />
         </div>
 
         <!-- Identity Dropdown -->
         <div class="register__field">
-          <label class="register__label" for="identity">Identity</label>
+          <label class="register__label" for="identity">Your identity</label>
           <select id="identity" formControlName="identity" class="register__input register__select">
             <option value="" disabled>Select Identity</option>
-            <option value="homo_sapiens">Member of Human Species (Homo Sapiens)</option>
+            <option value="homo_sapiens">Member of human species (homo sapiens)</option>
             <option value="others">Others</option>
           </select>
         </div>
 
         <!-- Gender Dropdown -->
         <div class="register__field">
-          <label class="register__label" for="gender">Your Gender</label>
+          <label class="register__label" for="gender">Your gender</label>
           <select id="gender" formControlName="gender" class="register__input register__select">
-            <option value="" disabled>Select Gender</option>
+            <option value="" disabled>Select gender</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
             <option value="transgender">Transgender</option>

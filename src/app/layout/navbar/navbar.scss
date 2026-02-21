@@ -6,7 +6,7 @@
   z-index: 1000;
   background: #ffffff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  height: 64px;
+  height: 6rem;
 
   &__container {
     max-width: 100%;
@@ -14,7 +14,7 @@
     padding: 0 1.5rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     gap: 2rem;
     background-color: #0f0f0f;
     border-bottom: 1px solid;
@@ -76,6 +76,10 @@
     align-items: center;
     gap: 1rem;
     flex-shrink: 0;
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   &__notification-btn {
@@ -304,8 +308,8 @@
 
 .navbar__brand-title h1 {
   color: #ffffff;
-  font-size: 3.5rem;
-
+  font-size: 3.9rem;
+  font-weight: 700;
 }
 
 .navbar__brand-title {
@@ -315,7 +319,7 @@
 
   h1 {
     font-family: 'Cinzel', serif; // Or a similar authoritative serif
-    font-size: 2.5rem;
+    font-size: 3.9rem;
     margin: 0;
 
     // Sunrise Gradient: Ivory -> Gold -> Amber

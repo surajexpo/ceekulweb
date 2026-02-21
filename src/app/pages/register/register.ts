@@ -2,11 +2,13 @@ import { Component, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DocumentUpload } from './components/document-upload/document-upload';
+import { Navbar } from '../../layout/navbar/navbar';
 
 @Component({
   selector: 'app-register',
   standalone: true,
   imports: [
+    Navbar,
     CommonModule,
     ReactiveFormsModule,
     DocumentUpload
