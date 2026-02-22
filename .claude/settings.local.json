@@ -3,7 +3,15 @@
     "allow": [
       "Bash(ng generate:*)",
       "Bash(find . -name \"*.css\" -exec sh -c 'mv \"\"$1\"\" \"\"${1%.css}.scss\"\"' _ {} ;)",
-      "Bash(npm run build:*)"
+      "Bash(npm run build:*)",
+      "Bash(npx ng build:*)",
+      "Bash(lsof:*)",
+      "Bash(python3:*)",
+      "Bash(ps:*)",
+      "Bash(curl:*)",
+      "Bash(npx tsc:*)",
+      "Bash(# Check if there''s a Vite cache or Angular cache issue ls -la /Users/gs/Documents/GitHub/ceekulweb/.angular || echo \"\"No .angular cache directory\"\" ls -la /Users/gs/Documents/GitHub/ceekulweb/node_modules/.vite)",
+      "Bash(node -e:*)"
     ]
   }
 }

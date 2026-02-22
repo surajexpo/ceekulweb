@@ -1,11 +1,19 @@
 import { Component, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+interface Pillar {
+  title: string;
+  descriptor: string;
+  iconId: string;
+}
+
 interface ContentSection {
   id: string;
   title: string;
   heading: string;
+  tagline?: string;
   items?: string[];
+  pillars?: Pillar[];
   description?: string;
   note?: string;
 }
@@ -37,13 +45,38 @@ export class Landing {
       id: 'academy',
       title: 'CEEKUL ACADEMY',
       heading: 'COMPUTABLE VISION',
-      items: [
-        'Understanding Consciousness',
-        'Consciousness and Computation',
-        'Emerging Models of Computation',
-        'Data Encoding and Representation',
-        'User-Centric Web of Things',
-        'Human-Machine Synergy'
+      tagline: '',
+      pillars: [
+        {
+          title: 'Understanding Consciousness',
+          descriptor: 'Exploration of cognitive awareness frameworks and theoretical models of mind.',
+          iconId: 'mind'
+        },
+        {
+          title: 'Consciousness & Computation',
+          descriptor: 'Investigating computational parallels of human cognition and symbolic processing.',
+          iconId: 'compute'
+        },
+        {
+          title: 'Emerging Models of Computation',
+          descriptor: 'Post-classical paradigms including quantum, neuromorphic, and distributed architectures.',
+          iconId: 'quantum'
+        },
+        {
+          title: 'Data Encoding & Representation',
+          descriptor: 'Formal structures for transforming perception into computable abstractions.',
+          iconId: 'data'
+        },
+        {
+          title: 'User-Centric Web of Things',
+          descriptor: 'Human-aligned IoT ecosystems integrating context-aware digital intelligence.',
+          iconId: 'network'
+        },
+        {
+          title: 'Human–Machine Synergy',
+          descriptor: 'Collaborative intelligence models bridging biological cognition and artificial systems.',
+          iconId: 'synergy'
+        }
       ],
       note: 'The emerging Computable Vision will be implemented by Ceekul Academy.'
     },
@@ -103,9 +136,16 @@ export class Landing {
     }
   };
 
+  activeTab = signal<'titles' | 'content' | 'chat'>('content');
+
   selectedContent = computed(() => this.contentData[this.selectedId()]);
 
   selectTitle(id: string): void {
     this.selectedId.set(id);
+    this.activeTab.set('content');
+  }
+
+  setActiveTab(tab: 'titles' | 'content' | 'chat'): void {
+    this.activeTab.set(tab);
   }
 }
