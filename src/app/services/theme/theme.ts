@@ -31,17 +31,21 @@ export class ThemeService {
    */
   setTheme(theme: ThemeMode): void {
     this.currentTheme.set(theme);
-    localStorage.setItem(this.THEME_KEY, theme);
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem(this.THEME_KEY, theme);
+    }
   }
 
   /**
    * Get the initial theme from localStorage or system preference
    */
   private getInitialTheme(): ThemeMode {
-    // Check localStorage first
-    const stored = localStorage.getItem(this.THEME_KEY) as ThemeMode;
-    if (stored === 'light' || stored === 'dark') {
-      return stored;
+    // Check localStorage first (not available during SSR)
+    if (typeof localStorage !== 'undefined') {
+      const stored = localStorage.getItem(this.THEME_KEY) as ThemeMode;
+      if (stored === 'light' || stored === 'dark') {
+        return stored;
+      }
     }
 
     // Fall back to system preference

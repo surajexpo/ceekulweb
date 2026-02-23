@@ -1,0 +1,13 @@
+/
+/register
+/personal
+/personal/potential
+/personal/projects
+/personal/neurons
+/personal/kutumb
+/personal/future
+/personal/create
+/personal/advertise
+/personal/demand
+/personal/supply
+/personal/edit
